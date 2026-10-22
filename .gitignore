@@ -1,0 +1,11 @@
+node_modules/
+.next/
+dist/
+.expo/
+.runtime/
+.env
+*.log
+*.tsbuildinfo
+apps/mobile/web-build/
+__pycache__/
+apps/web/next-env.d.ts

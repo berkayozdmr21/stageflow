@@ -1,0 +1,56 @@
+{
+  "name": "stageflow",
+  "private": true,
+  "version": "0.1.0",
+  "workspaces": [
+    "apps/*"
+  ],
+  "scripts": {
+    "dev:api": "npm run dev -w @stageflow/api",
+    "dev:web": "npm run dev -w @stageflow/web",
+    "dev:mobile": "npm run start -w @stageflow/mobile",
+    "build": "npm run build -w @stageflow/api && npm run build -w @stageflow/web",
+    "test": "node --import tsx --test tests/*.test.ts",
+    "typecheck": "next typegen apps/web && tsc --noEmit -p apps/api && tsc --noEmit -p apps/web && tsc --noEmit -p apps/mobile"
+  },
+  "devDependencies": {
+    "@types/express": "^5",
+    "@types/node": "^24",
+    "@types/pg": "^8",
+    "@types/qrcode": "^1.5.6",
+    "@types/react": "^19.3.0",
+    "@types/react-dom": "^19.3.0",
+    "tsx": "4.23.15",
+    "typescript": "6.0.3"
+  },
+  "dependencies": {
+    "@expo/metro-runtime": "~58.0.4",
+    "@nestjs/common": "12.2.0",
+    "@nestjs/core": "12.2.0",
+    "@nestjs/jwt": "12.0.3",
+    "@nestjs/platform-express": "12.2.0",
+    "@nestjs/swagger": "12.0.3",
+    "@react-native-async-storage/async-storage": "2.2.0",
+    "cookie-parser": "^1.4.7",
+    "expo": "58.0.17",
+    "expo-camera": "~58.0.12",
+    "expo-constants": "~58.0.5",
+    "expo-secure-store": "~58.0.2",
+    "expo-status-bar": "~58.0.3",
+    "lucide-react": "1.61.0",
+    "next": "16.4.2",
+    "pg": "8.23.1",
+    "qrcode": "^1.5.4",
+    "react": "19.3.0",
+    "react-dom": "19.3.0",
+    "react-native": "0.88.0",
+    "react-native-svg": "15.16.0",
+    "react-native-web": "0.21.4",
+    "reflect-metadata": "^0.2.2",
+    "rxjs": "^7.8.2",
+    "socket.io": "4.8.4",
+    "socket.io-client": "4.8.4",
+    "zod": "4.6.7",
+    "expo-image-picker": "~58.0.10"
+  }
+}
