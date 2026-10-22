@@ -1,5 +1,9 @@
 "use client";
-import { festivalDate, festivalInput } from "../../../packages/contracts";
+import {
+  festivalDate,
+  festivalInput,
+  festivalDisplayDate,
+} from "../../../packages/contracts";
 import { useState, useEffect, useCallback } from "react";
 import { io } from "socket.io-client";
 import {
@@ -1142,7 +1146,7 @@ export default function App() {
                         <strong>{a.name}</strong>
                         <p>{actionLabel(a.action)}</p>
                         <small>
-                          {new Date(a.createdAt).toLocaleDateString("tr-TR")} ·{" "}
+                          {festivalDisplayDate(a.createdAt)} ·{" "}
                           {time(a.createdAt)}
                         </small>
                       </div>
@@ -1420,8 +1424,8 @@ export default function App() {
                           <span>
                             {stageName(s.stageId)}
                             <small>
-                              {new Date(s.startsAt).toLocaleDateString("tr-TR")}{" "}
-                              · {time(s.startsAt)}–{time(s.endsAt)}
+                              {festivalDisplayDate(s.startsAt)} ·{" "}
+                              {time(s.startsAt)}–{time(s.endsAt)}
                             </small>
                           </span>
                         </div>
@@ -1731,8 +1735,7 @@ export default function App() {
                   </div>
                   <code>{a.entity.slice(0, 18)}</code>
                   <time>
-                    {new Date(a.createdAt).toLocaleDateString("tr-TR")} ·{" "}
-                    {time(a.createdAt)}
+                    {festivalDisplayDate(a.createdAt)} · {time(a.createdAt)}
                   </time>
                 </div>
               ))}

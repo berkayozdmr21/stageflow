@@ -23,3 +23,9 @@ export function festivalDate(value: string) {
 export function festivalInput(value: string) {
   return new Date(Date.parse(value) + 3 * 3600000).toISOString().slice(0, 16);
 }
+/** Display the same calendar day as the festival's Istanbul clock on any device. */
+export function festivalDisplayDate(value: string) {
+  return new Date(value).toLocaleDateString("tr-TR", {
+    timeZone: "Europe/Istanbul",
+  });
+}

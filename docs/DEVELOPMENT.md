@@ -12,7 +12,7 @@ Kök `package.json`, uygulama bağımlılıklarının birleşimini de içerir; b
 
 ## Test senaryoları
 
-20 test; organizasyon izolasyonu, parola doğrulama, katılımcı veri sınırı, görev bağımlılığı, sürüm çakışması, idempotency, rol sınırı, program ve vardiya çakışması, ekipman kapasitesi, eşzamanlı bilet girişi, kuyruk sırası/koruma, İstanbul tarih dönüşümü ve sahne konumu sınırlarını kapsar.
+22 test; organizasyon izolasyonu, parola doğrulama, katılımcı veri sınırı, görev bağımlılığı, sürüm çakışması, idempotency, rol sınırı, program ve vardiya çakışması, ekipman kapasitesi, eşzamanlı bilet girişi, kuyruk sırası/koruma, İstanbul tarih dönüşümü ve sahne konumu sınırlarını kapsar.
 
 Tarayıcı kabul kontrolü: teknik hesapla mobilde görev başlat; webde admin hesabının açık görev tablosunda yenilemeden durumu gör. Sunucuyu kapatıp mobilde bir görevi değiştir; “Eşitleme bekliyor” uyarısını gör, sunucuyu açınca kaydın eşitlenmesini doğrula.
 

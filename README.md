@@ -117,7 +117,7 @@ npx expo export --platform android --output-dir ../../.runtime/android-export
 
 Testler varsayılan yerel PostgreSQL'e bağlanır; `stageflow_test_<pid>` adlı **ayrı** veritabanı oluşturup test sonunda kaldırır. Test kullanıcısında veritabanı oluşturma yetkisi olmalı. Farklı sunucu için `TEST_DATABASE_URL` kullan.
 
-**Doğrulananlar:** 20 test; üç uygulamanın TypeScript kontrolü; API ve Next.js üretim derlemesi; Expo web export; Android Hermes export; tarayıcıda web/mobil giriş, ortak görev verisi, web canlı güncellemesi ve bağlantı kesildiğinde mobil kuyruk.
+**Doğrulananlar:** 22 test; üç uygulamanın TypeScript kontrolü; API ve Next.js üretim derlemesi; Expo web export; Android Hermes export; tarayıcıda web/mobil giriş, ortak görev verisi, web canlı güncellemesi ve bağlantı kesildiğinde mobil kuyruk.
 
 **Sınırlar:** Android export, APK değildir. APK/IPA kurulumu ve fiziksel cihazda kamera/QR henüz doğrulanmadı. Alan planı şematiktir. Ödeme, gerçek bilet satışı, push bildirimi ve çoklu festival oluşturma ekranı yoktur. Çevrimdışı yazma yalnızca görev durumları içindir; bilet kontrolü, fotoğraf ve ekipman işlemleri bağlantı ister. Bu sürüm portföy/demo kapsamındadır.
 
