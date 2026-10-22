@@ -1,0 +1,20 @@
+{
+  "name": "@stageflow/web",
+  "private": true,
+  "scripts": {
+    "dev": "next dev --hostname 127.0.0.1 --port 9148",
+    "build": "next build",
+    "start": "next start --hostname 127.0.0.1 --port 9148"
+  },
+  "dependencies": {
+    "next": "16.4.2",
+    "react": "19.3.0",
+    "react-dom": "19.3.0",
+    "lucide-react": "1.61.0",
+    "socket.io-client": "4.8.4",
+    "qrcode": "^1.5.4"
+  },
+  "devDependencies": {
+    "@types/qrcode": "^1.5.5"
+  }
+}
