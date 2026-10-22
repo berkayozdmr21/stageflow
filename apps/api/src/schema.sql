@@ -1,0 +1,18 @@
+CREATE TABLE IF NOT EXISTS organizations(id text PRIMARY KEY,name text NOT NULL);
+CREATE TABLE IF NOT EXISTS users(id text PRIMARY KEY,org_id text REFERENCES organizations(id),name text NOT NULL,email text UNIQUE NOT NULL,password text NOT NULL,role text NOT NULL,team text);
+CREATE TABLE IF NOT EXISTS festivals(id text PRIMARY KEY,org_id text REFERENCES organizations(id),name text NOT NULL,location text NOT NULL,starts_at text NOT NULL,ends_at text NOT NULL,capacity integer NOT NULL);
+CREATE TABLE IF NOT EXISTS stages(id text PRIMARY KEY,festival_id text REFERENCES festivals(id),name text NOT NULL,color text NOT NULL,x integer NOT NULL,y integer NOT NULL,capacity integer NOT NULL);
+CREATE TABLE IF NOT EXISTS performances(id text PRIMARY KEY,festival_id text REFERENCES festivals(id),stage_id text REFERENCES stages(id),artist text NOT NULL,genre text NOT NULL,starts_at text NOT NULL,ends_at text NOT NULL,status text NOT NULL DEFAULT 'scheduled',version integer NOT NULL DEFAULT 1);
+CREATE TABLE IF NOT EXISTS tasks(id text PRIMARY KEY,festival_id text REFERENCES festivals(id),title text NOT NULL,description text NOT NULL,team text NOT NULL,stage_id text REFERENCES stages(id),assignee text REFERENCES users(id),priority text NOT NULL,status text NOT NULL DEFAULT 'todo',due_at text NOT NULL,dependencies text[] NOT NULL DEFAULT '{}',version integer NOT NULL DEFAULT 1);
+CREATE TABLE IF NOT EXISTS equipment(id text PRIMARY KEY,festival_id text REFERENCES festivals(id),name text NOT NULL,category text NOT NULL,quantity integer NOT NULL,code text UNIQUE NOT NULL);
+CREATE TABLE IF NOT EXISTS reservations(id text PRIMARY KEY,equipment_id text REFERENCES equipment(id),stage_id text REFERENCES stages(id),quantity integer NOT NULL,starts_at text NOT NULL,ends_at text NOT NULL,returned boolean NOT NULL DEFAULT false,created_by text REFERENCES users(id));
+CREATE TABLE IF NOT EXISTS shifts(id text PRIMARY KEY,festival_id text REFERENCES festivals(id),user_id text REFERENCES users(id),stage_id text REFERENCES stages(id),starts_at text NOT NULL,ends_at text NOT NULL);
+CREATE TABLE IF NOT EXISTS incidents(id text PRIMARY KEY,festival_id text REFERENCES festivals(id),title text NOT NULL,description text NOT NULL,severity text NOT NULL,status text NOT NULL DEFAULT 'open',stage_id text REFERENCES stages(id),created_by text REFERENCES users(id),created_at timestamptz NOT NULL DEFAULT now(),photo text);
+CREATE TABLE IF NOT EXISTS tickets(id text PRIMARY KEY,festival_id text REFERENCES festivals(id),user_id text REFERENCES users(id),code text UNIQUE NOT NULL,category text NOT NULL,checked_in_at timestamptz,checked_in_by text REFERENCES users(id));
+CREATE TABLE IF NOT EXISTS favorites(user_id text REFERENCES users(id),performance_id text REFERENCES performances(id),PRIMARY KEY(user_id,performance_id));
+CREATE TABLE IF NOT EXISTS audit(id bigserial PRIMARY KEY,org_id text NOT NULL,user_id text,name text NOT NULL,action text NOT NULL,entity text NOT NULL,details jsonb NOT NULL DEFAULT '{}',created_at timestamptz NOT NULL DEFAULT now());
+CREATE TABLE IF NOT EXISTS mutations(user_id text NOT NULL,mutation_id text NOT NULL,result jsonb NOT NULL,PRIMARY KEY(user_id,mutation_id));
+ALTER TABLE mutations ADD COLUMN IF NOT EXISTS request_hash text;
+CREATE INDEX IF NOT EXISTS tasks_festival ON tasks(festival_id);
+CREATE INDEX IF NOT EXISTS performances_festival ON performances(festival_id);
+CREATE INDEX IF NOT EXISTS audit_org ON audit(org_id,id DESC);
