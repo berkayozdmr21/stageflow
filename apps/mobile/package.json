@@ -1,0 +1,25 @@
+{
+  "name": "@stageflow/mobile",
+  "private": true,
+  "main": "index.ts",
+  "scripts": {
+    "start": "expo start --port 9150",
+    "web": "expo start --web --port 9150",
+    "export:web": "expo export --platform web"
+  },
+  "dependencies": {
+    "expo": "58.0.17",
+    "react": "19.3.0",
+    "react-dom": "19.3.0",
+    "react-native": "0.88.0",
+    "react-native-web": "0.21.4",
+    "@react-native-async-storage/async-storage": "2.2.0",
+    "expo-camera": "~58.0.12",
+    "expo-status-bar": "~58.0.3",
+    "expo-constants": "~58.0.5",
+    "@expo/metro-runtime": "~58.0.4",
+    "expo-secure-store": "~58.0.2",
+    "react-native-svg": "15.16.0",
+    "expo-image-picker": "~58.0.10"
+  }
+}
