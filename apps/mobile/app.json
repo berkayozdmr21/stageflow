@@ -1,0 +1,32 @@
+{
+  "expo": {
+    "name": "Stageflow Field",
+    "slug": "stageflow-field",
+    "version": "0.1.0",
+    "orientation": "portrait",
+    "userInterfaceStyle": "light",
+    "scheme": "stageflow",
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "com.berkayozdemir.stageflow"
+    },
+    "android": { "package": "com.berkayozdemir.stageflow" },
+    "web": { "bundler": "metro", "name": "Stageflow Field" },
+    "plugins": [
+      [
+        "expo-camera",
+        {
+          "cameraPermission": "Festival girişinde QR bilet okumak için kamerayı kullan."
+        }
+      ],
+      "expo-secure-store",
+      [
+        "expo-image-picker",
+        {
+          "photosPermission": "Olay kaydına sahadan fotoğraf ekle.",
+          "microphonePermission": false
+        }
+      ]
+    ]
+  }
+}
