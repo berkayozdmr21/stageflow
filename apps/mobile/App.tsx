@@ -21,7 +21,7 @@ import { CameraView, useCameraPermissions } from "expo-camera";
 import { SvgXml } from "react-native-svg";
 import * as ImagePicker from "expo-image-picker";
 import { drain, reconcile, Mutation } from "./sync";
-import { festivalDate } from "../../packages/contracts";
+import { festivalDate, festivalDisplayDate } from "../../packages/contracts";
 type Row = Record<string, any>;
 const fallback = process.env.EXPO_PUBLIC_API_URL || "http://127.0.0.1:9149";
 const clock = (s: string) =>
@@ -631,8 +631,8 @@ export default function App() {
                 <View style={s.card} key={v.id}>
                   <Text style={s.cardTitle}>{stageName(v.stageId)}</Text>
                   <Text style={s.help}>
-                    {new Date(v.startsAt).toLocaleDateString("tr-TR")} ·{" "}
-                    {clock(v.startsAt)}—{clock(v.endsAt)}
+                    {festivalDisplayDate(v.startsAt)} · {clock(v.startsAt)}—
+                    {clock(v.endsAt)}
                   </Text>
                 </View>
               ))}
